@@ -29,6 +29,9 @@ core
 *.a
 *.lib
 
+# Audio files
+*.wav
+
 # Test log files
 *.testlog
 
