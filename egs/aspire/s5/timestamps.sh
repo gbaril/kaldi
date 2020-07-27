@@ -32,7 +32,7 @@ online2-wav-nnet3-latgen-faster \
   $dir/exp/tdnn_7b_chain_online/graph_pp/HCLG.fst \
   'ark:echo id1 id1|' \
   'scp:echo id1 '"$wav"'|' \
-  'ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | lattice-1best --lm-scale=11 ark:- ark:- | lattice-align-words $TDNN/graph_pp/phones/word_boundary.int $TDNN/final.mdl ark:- ark:- | nbest-to-ctm --frame-shift=0.01 --print-silence=false ark:- - | $dir/utils/int2sym.pl -f 5 $TDNN/graph_pp/words.txt > '"$output" &> /dev/null
+  'ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | lattice-1best --lm-scale=11 ark:- ark:- | lattice-align-words $TDNN/graph_pp/phones/word_boundary.int $TDNN/final.mdl ark:- ark:- | nbest-to-ctm --frame-shift=0.03 --print-silence=false ark:- - | $dir/utils/int2sym.pl -f 5 $TDNN/graph_pp/words.txt > '"$output" &> /dev/null
 
 # Print the output
 cat $output | cut -c 7-
